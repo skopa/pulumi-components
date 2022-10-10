@@ -22,7 +22,7 @@ export class Json {
      *
      * @param value
      */
-    public static stringify(value: JsonValue) {
+    public static stringify<TValue>(value: JsonValue<TValue>) {
         return (new Json(value)).toString();
     }
 
@@ -41,7 +41,7 @@ interface JsonValueInterface {
     [key: string]: pulumi.Input<Value | JsonValue | JsonValue[] | never[]> | pulumi.Input<Value | JsonValue | JsonValue[] | never[]>[];
 }
 
-declare type JsonValue = pulumi.Input<Value | JsonValueInterface | JsonValueInterface[] | never[]>;
+declare type JsonValue<TValue = any> = pulumi.Input<Value | JsonValueInterface | JsonValueInterface[] | never[] | TValue>;
 
 /**
  * Possible value
