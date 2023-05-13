@@ -1,6 +1,8 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as yaml from 'yaml'
 
+import { YamlValue } from './yaml-value';
+
 
 /**
  * Component to convert json to dotenv format
@@ -36,16 +38,3 @@ export class Yaml {
     }
 }
 
-
-/**
- * Input json
- */
-interface YamlValue {
-    [key: string]: pulumi.Input<YamlValue | object | Value>;
-}
-
-
-/**
- * Possible values
- */
-declare type Value = string | number | null;

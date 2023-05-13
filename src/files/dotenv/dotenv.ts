@@ -1,5 +1,7 @@
 import * as pulumi from '@pulumi/pulumi';
 
+import { DotenvValue, Value } from './dotenv-value';
+
 /**
  * Component to convert json to dotenv format
  */
@@ -44,14 +46,3 @@ export class Dotenv {
     }
 }
 
-/**
- * Input json
- */
-interface DotenvValue {
-    [key: string]: pulumi.Input<Value>;
-}
-
-/**
- * Possible value
- */
-declare type Value = string | number | null;
