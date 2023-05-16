@@ -26,9 +26,10 @@ export class LocalFileResourceProvider implements pulumi.dynamic.ResourceProvide
      * @param news
      */
     async diff(id: pulumi.ID, olds: LocalFileProviderInputs, news: LocalFileProviderInputs): Promise<DiffResult> {
-        const changes = !(olds.path === news.path && olds.content === news.content);
+        const changes: boolean = !(olds.path === news.path && olds.content === news.content);
+        const replaces: string[] = olds.path !== news.path ? [ 'path' ] : [];
 
-        return Promise.resolve({ changes, replaces: [ 'path' ], deleteBeforeReplace: true });
+        return Promise.resolve({ changes, replaces, deleteBeforeReplace: true });
     }
 
     /**
