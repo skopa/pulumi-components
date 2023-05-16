@@ -38,7 +38,7 @@ export class LocalFileResourceProvider implements pulumi.dynamic.ResourceProvide
      * @param props
      */
     async delete(id: pulumi.ID, props: LocalFileProviderInputs): Promise<void> {
-        fs.rmSync(process.cwd() + props.path);
+        fs.rmSync(process.cwd() + props.path, { force: true });
 
         return Promise.resolve(undefined);
     }
